@@ -1,0 +1,48 @@
+body{
+    background-image: url("../imagenes/fondo.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.logo{
+    height: 50px;
+}
+
+.portada{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo h1{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 20px;
+}
+
+.titulo h2{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.logo2{
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.btnInicio{
+    height: 70px;
+    width: 160px;
+    background-color: rgba(0, 154, 143);
+    border-radius: 15%;
+    cursor: pointer;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+
+.btnInicio:active{
+    background-color: rgb(1, 115, 107);
+}
