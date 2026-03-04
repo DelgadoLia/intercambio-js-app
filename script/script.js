@@ -78,7 +78,7 @@ function irPagina3(){
   });
   localStorage.setItem("personas", JSON.stringify(personas));
   console.log("Arreglo con todos los integrantes:", personas);
-  //window.location.href = "nombres.html";
+  window.location.href = "excluir.html";
 }
 
 
@@ -166,4 +166,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function regresar2(){
   window.location.href="nombres.html";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function noExcluir(boton){
+  boton.classList.toggle("active");
+}
+
+
+
+
+
+
+function excluir(boton){
+  boton.classList.toggle("active");
 }

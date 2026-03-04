@@ -42,13 +42,13 @@
         <div class="cuadro">
             <h1>¿Quieres excluir ciertos sorteos?</h1>
             <h4>Usa exclusiones para evitar que ciertas personas saquen nombres especificos.</h4>
+            <button class="btnNoExclusion" onclick="noExcluir(this)">No establecer exclusiones</button>
+            <button class="btnExclusion" onclick="excluir(this)">Establecer exclusiones</button>
             <div id="listaNombres">
                 <div class="item">
                     <input type="text" value="nombre del organizador">
-                    <button class="btnEliminar" onclick="eliminarNombre(this)">x</button>
                 </div>
             </div>
-            <button class="btnAgregar" onclick="agregarNombre()">+</button>
             <button class="btnInicio" onclick="irPagina2()"><img src="imagenes/pelonS.png" alt="Boton"></button>
         </div>
         <div class="alerta">

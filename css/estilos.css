@@ -127,7 +127,29 @@ input[type="checkbox"]{
     margin-bottom: 20px;
 }
 
+.item{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 /*excluir.html *************************************************/
 .imgCarga3 :nth-child(n+4){
     filter: brightness(60%);
+}
+
+.btnNoExclusion, .btnExclusion{
+    width: 250px;
+    margin-bottom: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    background-color: rgba(251, 197, 38);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btnNoExclusion.active, .btnExclusion.active{
+    background-color: rgb(154, 121, 23);
+    transition: scale(0.95);
 }
