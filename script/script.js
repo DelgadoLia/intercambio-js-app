@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function regresar1(){
+  window.location.href="base.html";
+}
+
+
+
+
 function irPagina2(){
   const nombre = document.getElementById("nomOrganizador").value.trim();
   if (!nombre) {
@@ -143,6 +150,7 @@ function eliminarNombreAdmin(boton){
 
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const nombreAdmin = document.getElementById("printNombre");
@@ -153,3 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+
+function regresar2(){
+  window.location.href="nombres.html";
+}
