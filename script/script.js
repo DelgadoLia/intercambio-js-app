@@ -1,10 +1,57 @@
+const personas = [];
+
+function insertarPersona(nombre) {
+
+  const existe = personas.some(p => p.nombre === nombre);
+
+  if (existe) {
+    alert("Ese nombre ya está agregado");
+    return false;
+  }
+
+  personas.push({
+    nombre: nombre,
+    exepciones: [nombre],
+    recibe: false,
+    nombreSorteado: "",
+    exPropias: 0
+  });
+
+  console.log("Persona agregada:", nombre);
+  console.log("Estado actual del arreglo:", personas);
+
+  return true;
+}
+
+
+
+
+
 function irPagina1(){
     window.location.href="base.html";
 }
 
+
+
+
 function irPagina2(){
-    window.location.href="nombres.html";
+  const nombre = document.getElementById("nomOrganizador").value.trim();
+  if (!nombre) {
+    alert("Por favor escribe tu nombre");
+    return;
+  }
+  localStorage.setItem("organizador", nombre);
+
+  const confirmacion = document.getElementById("confirmar");
+  if (confirmacion.checked) {
+    insertarPersona(nombre);
+  }
+  window.location.href="nombres.html";
 }
+
+
+
+
 
 //Para mosrtar alert de ayuda
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
@@ -20,12 +67,21 @@ const appendAlert = (message, type) => {
   alertPlaceholder.append(wrapper)
 }
 
+
+
+
+
+
 const alertTrigger = document.getElementById('liveAlertBtn')
 if (alertTrigger) {
   alertTrigger.addEventListener('click', () => {
     appendAlert('Presiona el dulce para continuar', 'success')
   })
 }
+
+
+
+
 
 //lista de nombres
 
