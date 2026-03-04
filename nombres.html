@@ -30,7 +30,7 @@
     </nav>
 
     <section class="cuadroInformacion">
-        <div class="imgCarga1">
+        <div class="imgCarga2">
             <img src="imagenes/piñataS.png" alt="pi1">
             <img src="imagenes/piñataS.png" alt="pi2">
             <img src="imagenes/piñataS.png" alt="pi3">
@@ -40,13 +40,15 @@
             <img src="imagenes/piñataS.png" alt="pi7">
         </div>
         <div class="cuadro">
-            <h1>¿Cuál es tu nombre?</h1>
-            <input type="text" id="nomOrganizador" placeholder="Escribe aquí">
-            <label for="confirmar">
-                <input type="checkbox" id="confirmar">
-                Inclúyeme (el organizador) en el sorteo
-            </label>
-            <button class="btnInicio" onclick="irPagina2()"><img src="imagenes/mazapanS.png" alt="Boton"></button>
+            <h1>¿Con quién vas a sortear?</h1>
+            <div id="listaNombres">
+                <div class="item">
+                    <input type="text" value="nombre del organizador">
+                    <button class="btnEliminar" onclick="eliminarNombre(this)">x</button>
+                </div>
+            </div>
+            <button class="btnAgregar" onclick="agregarNombre()">+</button>
+            <button class="btnInicio" onclick="irPagina2()"><img src="imagenes/pulparindo.png" alt="Boton"></button>
         </div>
         <div class="alerta">
             <div id="liveAlertPlaceholder"></div>

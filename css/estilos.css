@@ -53,7 +53,76 @@ h1{
     100% { transform: translateX(0); }
 }
 
-/* Cuando se presiona */
+/*Cuando se presiona*/
 .btnInicio:active img {
     animation: sacudir 0.3s;
+}
+
+/*base.html**************************************************************************/
+.cuadroInformacion{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cuadroInformacion img{
+    width: 100px;
+}
+
+.imgCarga1 :nth-child(n+2){
+    filter: brightness(60%);
+}
+
+.cuadroInformacion h1{
+    text-align: center;
+}
+
+.cuadro{
+    border-color: rgba(206, 14, 110);
+    border-style: double;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+}
+
+input, text{
+    padding: 10px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    background-color: #ece5d8;
+}
+
+input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.alerta{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*nombres.html *************************************************/
+.imgCarga2 :nth-child(n+3){
+    filter: brightness(60%);
+}
+
+.btnAgregar, .btnEliminar{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
