@@ -69,6 +69,7 @@ function irPagina3(){
       insertarPersona(nombre);
     }
   });
+  localStorage.setItem("personas", JSON.stringify(personas));
   console.log("Arreglo con todos los integrantes:", personas);
   //window.location.href = "nombres.html";
 }
