@@ -177,8 +177,6 @@ function regresar2(){
 
 
 
-
-
 function noExcluir(boton){
   boton.classList.toggle("active");
 }
@@ -190,4 +188,20 @@ function noExcluir(boton){
 
 function excluir(boton){
   boton.classList.toggle("active");
+}
+
+
+
+
+
+
+
+function irPagina4(){
+  window.location.href="tematica.html";
+}
+
+
+
+function regresar3(){
+  window.location.href="excluir.html";
 }

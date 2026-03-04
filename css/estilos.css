@@ -147,9 +147,20 @@ input[type="checkbox"]{
     background-color: rgba(251, 197, 38);
     font-size: 18px;
     cursor: pointer;
+    border-radius: 10px;
+    margin-left: 20px;
 }
 
 .btnNoExclusion.active, .btnExclusion.active{
     background-color: rgb(154, 121, 23);
     transition: scale(0.95);
+}
+
+/*tematica.html *******************************************************/
+.imgCarga4 :nth-child(n+5){
+    filter: brightness(60%);
+}
+
+.btnSanValentin, .btnDNino, .btnDMadre, .btnNavidad{
+    background-color: rgb(236, 237, 204);
 }

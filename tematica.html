@@ -30,7 +30,7 @@
     </nav>
 
     <section class="cuadroInformacion">
-        <div class="imgCarga3">
+        <div class="imgCarga4">
             <img src="imagenes/piñataS.png" alt="pi1">
             <img src="imagenes/piñataS.png" alt="pi2">
             <img src="imagenes/piñataS.png" alt="pi3">
@@ -40,20 +40,30 @@
             <img src="imagenes/piñataS.png" alt="pi7">
         </div>
         <div class="cuadro">
-            <h1>¿Quieres excluir ciertos sorteos?</h1>
-            <h4>Usa exclusiones para evitar que ciertas personas saquen nombres especificos.</h4>
-            <button class="btnNoExclusion" onclick="noExcluir(this)">No establecer exclusiones</button>
-            <button class="btnExclusion" onclick="excluir(this)">Establecer exclusiones</button>
+            <h1>¿Para qué vas a sortear nombres?</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <button class="btn btnNavidad mb-2">Navidad</button><br>
+                        <button class="btn btnSanValentin">San Valentin</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <button class="btn btnDMadre mb-2">Día de la Madre</button><br>
+                        <button class="btn btnDNino">Día del Niño</button>
+                    </div>
+
+                </div>
+            </div>
             <div id="listaNombres">
                 <div class="item">
                     <input type="text" value="nombre del organizador">
                 </div>
             </div>
-            <button class="btnInicio" onclick="irPagina4()"><img src="imagenes/pelonS.png" alt="Boton"></button>
+            <button class="btnInicio" onclick="irPagina4()"><img src="imagenes/obleas.png" alt="Boton"></button>
         </div>
         <div class="alerta">
             <div id="liveAlertPlaceholder"></div>
-            <button class="btnAgregar" onclick="regresar2()">←</button>
+            <button class="btnAgregar" onclick="regresar3()">←</button>
             <button type="button" class="btn btn-primary" id="liveAlertBtn">¿Deseas continuar?</button>
         </div>
         
