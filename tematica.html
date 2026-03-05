@@ -29,6 +29,19 @@
         </div>
     </nav>
 
+    <div class="zonaDrag">
+        <img id="dulce1" src="imagenes/mazapanS.png" draggable="true" class="dulce">
+        <img id="dulce2" src="imagenes/tamborcito.png" draggable="true" class="dulce">
+        <img id="dulce3" src="imagenes/pelonS.png" draggable="true" class="dulce">
+        <img id="dulce4" src="imagenes/pulparindo.png" draggable="true" class="dulce">
+    </div>
+    <div class="botonesFijos text-center mt-4">
+        <button class="btn btnTematicaNa">Navidad</button>
+        <button class="btn btnTematicaV">San Valentin</button>
+        <button class="btn btnTematicaM">Día de la Madre</button>
+        <button class="btn btnTematicaN">Día del Niño</button>
+    </div>
+
     <section class="cuadroInformacion">
         <div class="imgCarga4">
             <img src="imagenes/piñataS.png" alt="pi1">
@@ -41,24 +54,8 @@
         </div>
         <div class="cuadro">
             <h1>¿Para qué vas a sortear nombres?</h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <button class="btn btnNavidad mb-2">Navidad</button><br>
-                        <button class="btn btnSanValentin">San Valentin</button>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <button class="btn btnDMadre mb-2">Día de la Madre</button><br>
-                        <button class="btn btnDNino">Día del Niño</button>
-                    </div>
-
-                </div>
-            </div>
-            <div id="listaNombres">
-                <div class="item">
-                    <input type="text" value="nombre del organizador">
-                </div>
-            </div>
+            <h4>Arrastra los dulces que están fuera del recuadro para tener ideas</h4>
+            <input type="text" id="tematica" placeholder="Escribe aquí">
             <button class="btnInicio" onclick="irPagina4()"><img src="imagenes/obleas.png" alt="Boton"></button>
         </div>
         <div class="alerta">

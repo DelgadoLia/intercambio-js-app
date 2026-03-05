@@ -205,3 +205,31 @@ function irPagina4(){
 function regresar3(){
   window.location.href="excluir.html";
 }
+
+
+
+
+//drag and drop///////////////////////////////////////////////////
+
+const dulces=document.querySelectorAll(".dulce");
+
+dulces.forEach(dulce=>{
+  dulce.addEventListener("dragstart", (e)=>{
+    e.dataTransfer.setData("text", e.target.id);
+  });
+});
+
+document.addEventListener("dragover", (e)=>{
+  e.preventDefault();
+});
+
+document.addEventListener("drop", (e)=>{
+  e.preventDefault();
+
+  const id=e.dataTransfer.getData("text");
+  const elemento=document.getElementById(id);
+  const rect=elemento.getBoundingClientRect();
+
+  elemento.style.left=(e.pageX-rect.width/2)+"px";
+  elemento.style.top=(e.pageY-rect.height/2)+"px";
+});
