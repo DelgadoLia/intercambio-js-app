@@ -197,7 +197,7 @@ function excluir(boton){
 
 
 function irPagina4(){
-  window.location.href="fecha.html";
+  window.location.href="tematica.html";
 }
 
 
