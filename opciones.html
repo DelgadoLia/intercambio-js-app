@@ -32,7 +32,7 @@
     
 
     <section class="cuadroInformacion">
-        <div class="imgCarga6">
+        <div class="imgCarga">
             <img src="imagenes/piñataS.png" alt="pi1">
             <img src="imagenes/piñataS.png" alt="pi2">
             <img src="imagenes/piñataS.png" alt="pi3">
@@ -42,28 +42,21 @@
             <img src="imagenes/piñataS.png" alt="pi7">
         </div>
         <div class="cuadro">
-            <h1>¿Cuánto deberían gastar los participantes?</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <button class="btn btn100 mb-2">$100</button><br>
-                        <button class="btn btn150">$150</button>
+                        <button class="btn btnDatos mb-2" onclick="irPagina8()">Mostrar datos del intercambio</button>
                     </div>
                     <div class="col-12 col-md-6">
-                        <button class="btn btn200 mb-2">$200</button><br>
-                        <button class="btn btnOtro">Otro</button>
+                        <button class="btn btnSorteo mb-2" onclick="irPagina9()">Mostrar Sorteo</button>
                     </div>
 
                 </div>
             </div>
-            <h1>Presupuesto</h1>
-            <input type="text" id="tematica" placeholder="Introduce un gasto personalizado">
-            <button class="btnInicio" onclick="irPagina7()"><img src="imagenes/dragonzitos.png" alt="Boton"></button>
         </div>
         <div class="alerta">
             <div id="liveAlertPlaceholder"></div>
-            <button class="btnAgregar" onclick="regresar5()">←</button>
-            <button type="button" class="btn btn-primary" id="liveAlertBtn">¿Deseas continuar?</button>
+            <button class="btnAgregar" onclick="regresar6()">←</button>
         </div>
         
     </section>

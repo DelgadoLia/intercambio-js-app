@@ -192,7 +192,7 @@ function excluir(boton){
 
 
 
-
+///////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -235,7 +235,7 @@ document.addEventListener("drop", (e)=>{
 });
 
 
-
+////////////////////////////////////////////////////////////////////////////////////////////
 
 function irPagina5(){
   window.location.href="fecha.html";
@@ -248,7 +248,7 @@ function regresar4(){
 }
 
 
-
+/////////////////////////////////////////////////////////////////////////////////////
 
 
 function irPagina6(){
@@ -259,4 +259,16 @@ function irPagina6(){
 
 function regresar5(){
   window.location.href="fecha.html";
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function irPagina7(){
+  window.location.href="opciones.html";
+}
+
+
+
+function regresar6(){
+  window.location.href="gasto.html";
 }

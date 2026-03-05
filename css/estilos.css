@@ -230,3 +230,12 @@ input[type="checkbox"]{
     background-color: rgb(236, 237, 204);
     width: 300px;
 }
+
+/*opciones.html *********************************************************************/
+.btnDatos, .btnSorteo{
+    background-color: rgb(236, 237, 204);
+    width: 300px;
+    height: 100px;
+    font-size: 25px;
+    margin-top: 50px;
+}
