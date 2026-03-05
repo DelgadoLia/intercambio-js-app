@@ -303,3 +303,16 @@ function irPagina9(){
 function regresar7(){
   window.location.href="opciones.html";
 }
+
+//Para mostrar cuadros de texto/////////////////////////////////////////////////////////
+
+function mostrar(boton){
+  if(boton.id === "btnfecha"){
+    document.getElementById("fecha").style.display="block";
+    document.getElementById("personalizadoFecha").style.display="block";
+  }else if(boton.id === "btngasto"){
+    document.getElementById("gastoText").style.display="block";
+    document.getElementById("personalizadoGasto").style.display="block";
+  }
+  
+}
