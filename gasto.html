@@ -29,21 +29,10 @@
         </div>
     </nav>
 
-    <div class="zonaDrag">
-        <img id="dulce1" src="imagenes/mazapanS.png" draggable="true" class="dulce">
-        <img id="dulce2" src="imagenes/tamborcito.png" draggable="true" class="dulce">
-        <img id="dulce3" src="imagenes/pelonS.png" draggable="true" class="dulce">
-        <img id="dulce4" src="imagenes/pulparindo.png" draggable="true" class="dulce">
-    </div>
-    <div class="botonesFijos text-center mt-4">
-        <button class="btn btnTematicaNa">Navidad</button>
-        <button class="btn btnTematicaV">San Valentin</button>
-        <button class="btn btnTematicaM">Día de la Madre</button>
-        <button class="btn btnTematicaN">Día del Niño</button>
-    </div>
+    
 
     <section class="cuadroInformacion">
-        <div class="imgCarga4">
+        <div class="imgCarga6">
             <img src="imagenes/piñataS.png" alt="pi1">
             <img src="imagenes/piñataS.png" alt="pi2">
             <img src="imagenes/piñataS.png" alt="pi3">
@@ -53,14 +42,27 @@
             <img src="imagenes/piñataS.png" alt="pi7">
         </div>
         <div class="cuadro">
-            <h1>¿Para qué vas a sortear nombres?</h1>
-            <h4>Arrastra los dulces que están fuera del recuadro para tener ideas</h4>
-            <input type="text" id="tematica" placeholder="Introduce una tematica personalizada">
-            <button class="btnInicio" onclick="irPagina4()"><img src="imagenes/obleas.png" alt="Boton"></button>
+            <h1>¿Cuánto deberían gastar los participantes?</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <button class="btn btn100 mb-2">$100</button><br>
+                        <button class="btn btn150">$150</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <button class="btn btn200 mb-2">$200</button><br>
+                        <button class="btn btnOtro">Otro</button>
+                    </div>
+
+                </div>
+            </div>
+            <h1>Presupuesto</h1>
+            <input type="text" id="tematica" placeholder="Introduce un gasto personalizado">
+            <button class="btnInicio" onclick="irPagina6()"><img src="imagenes/dragonzitos.png" alt="Boton"></button>
         </div>
         <div class="alerta">
             <div id="liveAlertPlaceholder"></div>
-            <button class="btnAgregar" onclick="regresar3()">←</button>
+            <button class="btnAgregar" onclick="regresar5()">←</button>
             <button type="button" class="btn btn-primary" id="liveAlertBtn">¿Deseas continuar?</button>
         </div>
         

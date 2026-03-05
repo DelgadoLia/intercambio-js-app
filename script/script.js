@@ -246,3 +246,17 @@ function irPagina5(){
 function regresar4(){
   window.location.href="tematica.html";
 }
+
+
+
+
+
+function irPagina6(){
+  window.location.href="gasto.html";
+}
+
+
+
+function regresar5(){
+  window.location.href="fecha.html";
+}
