@@ -206,6 +206,15 @@ function regresar3(){
   window.location.href="excluir.html";
 }
 
+
+function excluirMostrar(boton){
+  window.location.href="excluirMostrar.html";
+}
+
+function cancelar(){
+  window.location.href="excluir.html";
+}
+
 //Para el responsive design cambia instrucciones ////////////////////////////////////////
 
 function cambiarTexto(){

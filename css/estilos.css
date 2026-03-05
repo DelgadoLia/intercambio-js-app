@@ -170,6 +170,18 @@ input[type="checkbox"]{
     transition: scale(0.95);
 }
 
+.btnCancelar{
+    width: 250px;
+    margin-bottom: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    background-color: rgb(251, 38, 88);
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
 /*tematica.html *******************************************************/
 .imgCarga4{
     display: flex;
