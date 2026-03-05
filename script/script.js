@@ -206,6 +206,17 @@ function regresar3(){
   window.location.href="excluir.html";
 }
 
+//Para el responsive design cambia instrucciones ////////////////////////////////////////
+
+function cambiarTexto(){
+  if(window.innerWidth<992){
+    document.getElementById("textoInstrucciones").textContent = "Selecciona una tematica usando los botones que están arriba";
+  }
+}
+
+cambiarTexto();
+window.addEventListener("resize", cambiarTexto);
+
 
 
 

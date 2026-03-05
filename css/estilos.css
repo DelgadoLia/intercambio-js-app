@@ -4,6 +4,14 @@ body{
     background-position: center;
 }
 
+@media (max-width:768px){
+    body{
+        background-color: rgb(221, 197, 167);
+        background-image: none;
+    }
+
+}
+
 .logo{
     height: 50px;
 }
@@ -29,7 +37,8 @@ h1{
 }
 
 .logo2{
-    height: 400px;
+    height: 40vh;
+    max-height: 400px;
     margin-bottom: 20px;
 }
 
@@ -40,7 +49,7 @@ h1{
 }
 
 .btnInicio img{
-    width: 120px;
+    width: clamp(80px, 10vw, 120px); /*el  tamaño cambia segun la pantalla*/
 }
 
 /* Animación */
@@ -84,15 +93,19 @@ h1{
     border-style: double;
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
     height: auto;
-    margin: 0 auto;
+    margin: auto;
     border-radius: 10px;
 }
 
 input, text{
     padding: 10px;
-    width: 300px;
+    width: 90%;
+    max-width: 300px;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 16px;
@@ -158,6 +171,17 @@ input[type="checkbox"]{
 }
 
 /*tematica.html *******************************************************/
+.imgCarga4{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.imgCarga4 img{
+    width: 100px;
+}
+
 .imgCarga4 :nth-child(n+5){
     filter: brightness(60%);
 }
@@ -170,47 +194,54 @@ input[type="checkbox"]{
 
 .dulce{
     position: absolute;
-    width: 220px;
+    width: 12vw;
+    min-width: 90px;
+    max-width: 220px;
     cursor: grab;
     z-index: 10; /*para que las imagenes esten encima de los botones*/
 }
 
 .botonesFijos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     z-index: 1; /*estaran debajo*/
 }
 
-#dulce1{top:300px; left:1600px;}
-#dulce2{top:600px; left:1500px;}
-#dulce3{top:200px; left:400px;}
-#dulce4{top:400px; left:250px;}
+#dulce1{top:30vh; left:80vw;}
+#dulce2{top:60vh; left:75vw;}
+#dulce3{top:20vh; left:20vw;}
+#dulce4{top:40vh; left:15vw;}
 
 .btnTematicaM{
     background-color: rgb(236, 237, 204);
     position: absolute;
-    top:480px; 
-    left:1660px;
+    top:45vh; 
+    left:82vw;
 }
 
 .btnTematicaV{
     background-color: rgb(236, 237, 204);
     position: absolute;
-    top:780px; 
-    left:1560px;
+    top:70vh; 
+    left:78vw;
 }
 
 .btnTematicaNa{
     background-color: rgb(236, 237, 204);
     position: absolute;
-    top:380px; 
-    left:460px;
+    top:36vh; 
+    left:23vw;
 }
 
 .btnTematicaN{
     background-color: rgb(236, 237, 204);
     position: absolute;
-    top:550px; 
-    left:300px;
+    top:57vh; 
+    left:18vw;
 }
+
 
 /*fecha.html ************************************************************************/
 .imgCarga5 :nth-child(n+6){
@@ -229,16 +260,16 @@ input[type="checkbox"]{
 
 .btn100, .btn150, .btn200, .btnOtro{
     background-color: rgb(236, 237, 204);
-    width: 300px;
+    width: 250px;
 }
 
 /*opciones.html *********************************************************************/
 .btnDatos, .btnSorteo{
     background-color: rgb(236, 237, 204);
-    width: 300px;
-    height: 100px;
-    font-size: 25px;
-    margin-top: 50px;
+    width: 70%;
+    height: 70%;
+    font-size: 100%;
+    margin-top: 5%;
 }
 
 /*sorteo.html *********************************************************************/
@@ -247,8 +278,96 @@ input[type="checkbox"]{
     border-style:groove;
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 90%;
+    max-width: 800px;
     height: auto;
-    margin: 0 auto;
+    margin: auto;
     border-radius: 10px;
+}
+
+
+/*Botones responsivos*********************************/
+.btnNoExclusion, .btnExclusion{
+    width: 90%;
+    max-width: 250px;
+}
+
+@media (max-width:768px){
+
+    h1{
+        font-size:24px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+    .logo{
+        height:40px;
+    }
+
+    .imgCarga img{
+        width:60px;
+    }
+
+    .imgCarga1 img{
+        width:60px;
+    }
+
+    .imgCarga2 img{
+        width:60px;
+    }
+
+    .imgCarga3 img{
+        width:60px;
+    }
+
+    .imgCarga4 img{
+        width:60px;
+    }
+
+    .imgCarga5 img{
+        width:60px;
+    }
+
+    .imgCarga6 img{
+        width:60px;
+    }
+
+    .dulce{
+        width:18vw;
+        min-width:70px;
+    }
+
+    .btnDatos, .btnSorteo{
+        width:90%;
+        max-width:300px;
+        height:80px;
+        font-size:20px;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .zonaDrag{
+        display:none;
+    }
+
+    .botonesFijos{
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 40px;
+    }
+
+    .btnTematicaM, .btnTematicaV, 
+    .btnTematicaNa, .btnTematicaN{
+        position: static;
+        width: 80%;
+        max-width: 300px;
+    }
+
 }
