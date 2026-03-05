@@ -263,14 +263,68 @@ function regresar5(){
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
+function realizarIntercambio(personas) {
+
+  personas.forEach(p => {
+    p.recibe = false;
+    p.nombreSorteado = "";
+  });
+
+  let personasOrdenadas = [...personas].sort(
+    (a, b) => (b.excepciones?.length || 0) - (a.excepciones?.length || 0)
+  );
+
+  function backtrack(index) {
+
+    if (index === personasOrdenadas.length) {
+      return true;
+    }
+
+    let actual = personasOrdenadas[index];
+
+    let opciones = personasOrdenadas.filter(p =>
+      !p.recibe &&
+      !(actual.excepciones || []).includes(p.nombre)
+    );
+
+    for (let opcion of opciones) {
+
+      opcion.recibe = true;
+      actual.nombreSorteado = opcion.nombre;
+
+      if (backtrack(index + 1)) {
+        return true;
+      }
+
+      opcion.recibe = false;
+      actual.nombreSorteado = "";
+    }
+
+    return false;
+  }
+
+  const resultado = backtrack(0);
+
+  if (!resultado) {
+    alert("No existe combinación válida con las excepciones actuales");
+  }
+
+  return resultado;
+}
+
 
 function irPagina7(){
   const gasto = document.getElementById("gastoText").value.trim();
   if(gasto !== ""){
     localStorage.setItem("presupuesto", gasto);
   }
-  window.location.href="opciones.html";
+  let resultado = realizarIntercambio(personas);
+  if(resultado){
+    localStorage.setItem("personas", JSON.stringify(personas));
+    window.location.href = "opciones.html";
+  }
 }
+
 function regresar6(){
   window.location.href="gasto.html";
 }
