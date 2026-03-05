@@ -1,6 +1,11 @@
 let personas = JSON.parse(localStorage.getItem("personas")) || [];
+if(!Array.isArray(personas)){
+  personas = [];
+}
 
 function insertarPersona(nombre) {
+
+  nombre = nombre.trim();
 
   const existe = personas.some(p => p.nombre === nombre);
 
@@ -11,12 +16,11 @@ function insertarPersona(nombre) {
 
   personas.push({
     nombre: nombre,
-    exepciones: [nombre],
+    excepciones: [nombre],
     recibe: false,
     nombreSorteado: "",
     exPropias: 0
   });
-
 
   localStorage.setItem("personas", JSON.stringify(personas));
 
@@ -28,23 +32,26 @@ function insertarPersona(nombre) {
 
 
 
-
-
 function irPagina1(){
     window.location.href="base.html";
 };
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const confirmar=document.getElementById("confirmar");
   if(confirmar){
     document.getElementById("confirmar").addEventListener("change", () => {
-  const nombre = document.getElementById("nomOrganizador").value.trim();
-  if (nombre !== ""){
-    insertarPersona(nombre);
-  }  
-});
+      const nombre = document.getElementById("nomOrganizador").value.trim();
+      if (nombre !== ""){
+        insertarPersona(nombre);
+      }  
+    });
   }
 });
+
+
+
 
 function regresar1(){
   window.location.href="base.html";
@@ -67,7 +74,6 @@ function irPagina2(){
 
 
 
-
 function irPagina3(){
   const items = document.querySelectorAll("#listaNombres .item input");
   items.forEach(input => {
@@ -76,18 +82,10 @@ function irPagina3(){
       insertarPersona(nombre);
     }
   });
-  localStorage.setItem("personas", JSON.stringify(personas));
-  console.log("Arreglo con todos los integrantes:", personas);
   window.location.href = "excluir.html";
 }
 
 
-
-
-
-
-
-//Para mosrtar alert de ayuda
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 const appendAlert = (message, type) => {
   const wrapper = document.createElement('div')
@@ -101,11 +99,6 @@ const appendAlert = (message, type) => {
   alertPlaceholder.append(wrapper)
 };
 
-
-
-
-
-
 const alertTrigger = document.getElementById('liveAlertBtn')
 if (alertTrigger) {
   alertTrigger.addEventListener('click', () => {
@@ -117,7 +110,6 @@ if (alertTrigger) {
 
 
 
-//lista de nombres
 function agregarNombre(){
     const lista=document.getElementById("listaNombres");
     const nuevo=document.createElement("div");
@@ -133,19 +125,23 @@ function agregarNombre(){
 
 
 
-//ELIMINAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+
+
 function eliminarNombre(boton){
     boton.parentElement.remove();
 };
+
 function eliminarNombreAdmin(boton){
    const nombreAdmin = document.getElementById("printNombre").textContent;
-    personas.filter(usuario => nombre.id !== nombreAdmin);
-    boton.parentElement.remove();
-    console.log("Estado actual del arreglo:", personas);
+
+   personas = personas.filter(usuario => usuario.nombre !== nombreAdmin); 
+
+   localStorage.setItem("personas", JSON.stringify(personas));
+
+   boton.parentElement.remove();
+
+   console.log("Estado actual del arreglo:", personas);
 };
-
-
-
 
 
 
@@ -162,50 +158,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-
 function regresar2(){
   window.location.href="nombres.html";
 }
-
-
-
-
-
-
-
-
-
 
 function noExcluir(boton){
   boton.classList.toggle("active");
 }
 
-
-
-
-
-
 function excluir(boton){
   boton.classList.toggle("active");
 }
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////
-
-
 
 function irPagina4(){
   window.location.href="tematica.html";
 }
 
-
-
 function regresar3(){
   window.location.href="excluir.html";
 }
-
 
 function excluirMostrar(boton){
   window.location.href="excluirMostrar.html";
@@ -215,8 +188,6 @@ function cancelar(){
   window.location.href="excluir.html";
 }
 
-//Para el responsive design cambia instrucciones ////////////////////////////////////////
-
 function cambiarTexto(){
   if(window.innerWidth<992){
     document.getElementById("textoInstrucciones").textContent = "Selecciona una tematica usando los botones que están arriba";
@@ -225,11 +196,6 @@ function cambiarTexto(){
 
 cambiarTexto();
 window.addEventListener("resize", cambiarTexto);
-
-
-
-
-//drag and drop///////////////////////////////////////////////////
 
 const dulces=document.querySelectorAll(".dulce");
 
@@ -254,28 +220,43 @@ document.addEventListener("drop", (e)=>{
   elemento.style.top=(e.pageY-rect.height/2)+"px";
 });
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 function irPagina5(){
-  window.location.href="fecha.html";
+  const celebracion = document.getElementById("tematica").value.trim();
+  if (!celebracion) {
+    alert("Por favor escribe o selecciona una celebración");
+    return;
+  }else{
+    localStorage.setItem("celebracion", celebracion);
+    window.location.href="fecha.html";
+  }
 }
 
+const botonesTematica = document.querySelectorAll(".botonTematica");
+
+botonesTematica.forEach(boton => {
+
+  boton.addEventListener("click", () => {
+
+    const inputTematica = document.getElementById("tematica");
+
+    inputTematica.value = boton.textContent;
+
+  });
+
+});
 
 
 function regresar4(){
   window.location.href="tematica.html";
 }
 
-
 /////////////////////////////////////////////////////////////////////////////////////
-
 
 function irPagina6(){
   window.location.href="gasto.html";
 }
-
-
 
 function regresar5(){
   window.location.href="fecha.html";
@@ -287,13 +268,9 @@ function irPagina7(){
   window.location.href="opciones.html";
 }
 
-
-
 function regresar6(){
   window.location.href="gasto.html";
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -301,19 +278,13 @@ function irPagina8(){
   window.location.href="datos.html";
 }
 
-
-
 function irPagina9(){
   window.location.href="sorteo.html";
 }
 
-
-
 function regresar7(){
   window.location.href="opciones.html";
 }
-
-//Para mostrar cuadros de texto/////////////////////////////////////////////////////////
 
 function mostrar(boton){
   if(boton.id === "btnfecha"){
@@ -323,5 +294,140 @@ function mostrar(boton){
     document.getElementById("gastoText").style.display="block";
     document.getElementById("personalizadoGasto").style.display="block";
   }
-  
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const contenedor = document.getElementById("listaPersonas");
+
+  if(!contenedor) return;
+
+  const datos = localStorage.getItem("personas");
+  if(datos){
+    personas = JSON.parse(datos);
+  }
+
+  contenedor.innerHTML="";
+
+  personas.forEach(persona => {
+
+    const div=document.createElement("div");
+    div.style.marginBottom="10px";
+
+    const nombre=document.createElement("span");
+    nombre.textContent=persona.nombre+" ";
+
+    const boton=document.createElement("button");
+    boton.textContent="Añadir excepciones";
+
+    boton.addEventListener("click",()=>{
+      mostrarListaExcepciones(persona);
+    });
+
+    div.appendChild(nombre);
+    div.appendChild(boton);
+
+    contenedor.appendChild(div);
+
+  });
+
+});
+
+function mostrarListaExcepciones(personaActual){
+
+  const contenedor=document.getElementById("listaPersonas");
+
+  const listaDiv=document.createElement("div");
+
+  listaDiv.style.marginLeft="20px";
+  listaDiv.style.marginTop="10px";
+  listaDiv.style.border="1px solid black";
+  listaDiv.style.padding="10px";
+
+  const titulo=document.createElement("p");
+  titulo.textContent="Selecciona excepciones para "+personaActual.nombre;
+
+  const botonBorrar=document.createElement("button");
+  botonBorrar.textContent="X";
+
+  botonBorrar.onclick=()=>listaDiv.remove();
+
+  listaDiv.appendChild(titulo);
+  listaDiv.appendChild(botonBorrar);
+
+  personas.forEach(persona=>{
+
+    const fila=document.createElement("div");
+
+    const nombre=document.createElement("span");
+    nombre.textContent=persona.nombre+" ";
+
+    const botonAgregar=document.createElement("button");
+    botonAgregar.textContent="Agregar";
+
+    botonAgregar.addEventListener("click",()=>{
+
+      if(persona.nombre===personaActual.nombre){
+        alert("No puedes agregarte a ti mismo");
+        return;
+      }
+
+      if(personaActual.excepciones.includes(persona.nombre)){ 
+        alert("Ya está en la lista de excepciones");
+        return;
+      }
+
+      personaActual.excepciones.push(persona.nombre);
+
+      localStorage.setItem("personas", JSON.stringify(personas));
+
+      console.log("Excepciones actualizadas de",personaActual.nombre);
+      console.log(personaActual.excepciones);
+
+      alert("Excepción agregada");
+
+    });
+
+    fila.appendChild(nombre);
+    fila.appendChild(botonAgregar);
+
+    listaDiv.appendChild(fila);
+
+  });
+
+  contenedor.appendChild(listaDiv);
+
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  function generarFechas() {
+    const hoy = new Date();
+    const propuestas = [
+      new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 7),
+      new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 14),
+      new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 21)
+    ];
+    const botones = [
+      document.querySelector(".btnPropuesta1"),
+      document.querySelector(".btnPropuesta2"),
+      document.querySelector(".btnPropuesta3")
+    ];
+    propuestas.forEach((fecha, i) => {
+      if(!botones[i]) return;
+      const texto = fecha.toLocaleDateString("es-MX", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+      botones[i].textContent = texto;
+      botones[i].addEventListener("click", () => {
+        document.getElementById("fecha").value =
+          fecha.toISOString().split("T")[0];
+      });
+    });
+  }
+  generarFechas();
+
+});
