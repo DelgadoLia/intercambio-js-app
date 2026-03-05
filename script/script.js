@@ -272,3 +272,23 @@ function irPagina7(){
 function regresar6(){
   window.location.href="gasto.html";
 }
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function irPagina8(){
+  window.location.href="datos.html";
+}
+
+
+
+function irPagina9(){
+  window.location.href="sorteo.html";
+}
+
+
+
+function regresar7(){
+  window.location.href="opciones.html";
+}
