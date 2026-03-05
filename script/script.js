@@ -265,9 +265,12 @@ function regresar5(){
 ///////////////////////////////////////////////////////////////////////////////////
 
 function irPagina7(){
+  const gasto = document.getElementById("gastoText").value.trim();
+  if(gasto !== ""){
+    localStorage.setItem("presupuesto", gasto);
+  }
   window.location.href="opciones.html";
 }
-
 function regresar6(){
   window.location.href="gasto.html";
 }
@@ -402,32 +405,79 @@ function mostrarListaExcepciones(personaActual){
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  function generarFechas() {
-    const hoy = new Date();
-    const propuestas = [
-      new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 7),
-      new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 14),
-      new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 21)
-    ];
-    const botones = [
-      document.querySelector(".btnPropuesta1"),
-      document.querySelector(".btnPropuesta2"),
-      document.querySelector(".btnPropuesta3")
-    ];
-    propuestas.forEach((fecha, i) => {
-      if(!botones[i]) return;
-      const texto = fecha.toLocaleDateString("es-MX", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      });
-      botones[i].textContent = texto;
-      botones[i].addEventListener("click", () => {
-        document.getElementById("fecha").value =
-          fecha.toISOString().split("T")[0];
-      });
+  function generarFechas(){
+  const btn1 = document.querySelector(".btnPropuesta1");
+  const btn2 = document.querySelector(".btnPropuesta2");
+  const btn3 = document.querySelector(".btnPropuesta3");
+  if(!btn1 || !btn2 || !btn3) return;
+  const hoy = new Date();
+  const propuestas = [
+    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 7),
+    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 14),
+    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 21)
+  ];
+  const botones = [btn1, btn2, btn3];
+  propuestas.forEach((fecha, i) => {
+    const texto = fecha.toLocaleDateString("es-MX", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+    botones[i].textContent = texto;
+    botones[i].onclick = () => {
+      const fechaSeleccionada = fecha.toISOString().split("T")[0];
+      localStorage.setItem("fechaCelebracion", fechaSeleccionada);
+      window.location.href = "gasto.html";
+    };
+  });
+}
+  generarFechas();
+});
+
+
+
+
+const inputFecha = document.getElementById("fecha");
+if(inputFecha){
+  inputFecha.addEventListener("change", () => {
+    const fechaSeleccionada = inputFecha.value;
+    if(fechaSeleccionada !== ""){
+      localStorage.setItem("fechaCelebracion", fechaSeleccionada);
+      window.location.href = "gasto.html";
+    }
+  });
+}
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const btn100 = document.getElementById("btn100");
+  const btn150 = document.getElementById("btn150");
+  const btn200 = document.getElementById("btn200");
+
+  if(btn100){
+    btn100.addEventListener("click", () => {
+      localStorage.setItem("presupuesto", 100);
+      window.location.href="opciones.html";
     });
   }
-  generarFechas();
+
+  if(btn150){
+    btn150.addEventListener("click", () => {
+      localStorage.setItem("presupuesto", 150);
+      window.location.href="opciones.html";
+    });
+  }
+
+  if(btn200){
+    btn200.addEventListener("click", () => {
+      localStorage.setItem("presupuesto", 200);
+      window.location.href="opciones.html";
+    });
+  }
 
 });
