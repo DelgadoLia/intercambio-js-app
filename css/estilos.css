@@ -210,3 +210,13 @@ input[type="checkbox"]{
     top:550px; 
     left:300px;
 }
+
+/*fecha.html ************************************************************************/
+.imgCarga5 :nth-child(n+6){
+    filter: brightness(60%);
+}
+
+.btnPropuesta{
+    background-color: rgb(236, 237, 204);
+    margin-bottom: 15px;
+}

@@ -197,7 +197,7 @@ function excluir(boton){
 
 
 function irPagina4(){
-  window.location.href="tematica.html";
+  window.location.href="fecha.html";
 }
 
 
@@ -233,3 +233,16 @@ document.addEventListener("drop", (e)=>{
   elemento.style.left=(e.pageX-rect.width/2)+"px";
   elemento.style.top=(e.pageY-rect.height/2)+"px";
 });
+
+
+
+
+function irPagina5(){
+  window.location.href="fecha.html";
+}
+
+
+
+function regresar4(){
+  window.location.href="tematica.html";
+}
