@@ -255,26 +255,35 @@ input[type="checkbox"]{
 }
 
 /*exluirMostrar************************************************************************/
-#listaDivExcepciones{
+.listaDivExcepciones{
     background-color: rgb(238, 203, 160);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
-#botonAgregar{
+.botonAgregarExc{
+    margin-left: 3%;
     background-color: rgb(236, 237, 204);
     border-radius: 10px;
     border: none;
     font-size: 100%;
     cursor: pointer;
     margin-bottom: 3%;
+    width: 35%;
+}
+
+.botonAgregar{
+    background-color: rgb(236, 237, 204);
+    border-radius: 10px;
+    border: none;
+    font-size: 100%;
+    cursor: pointer;
+    margin-bottom: 3%;
+    margin-left: 3%;
     width: 20%;
     height: 100%;
 
 }
 
-#botonBorrar{
+.botonBorrar{
     width: 7%;
     height: 100%;
     border-radius: 10px;
