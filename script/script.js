@@ -62,6 +62,7 @@ function regresar1(){
 
 function irPagina2(){
   const nombre = document.getElementById("nomOrganizador").value.trim();
+  const check = document.getElementById("confirmar");
   if (!nombre) {
     alert("Por favor escribe tu nombre");
     return;
@@ -151,7 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const nombreAdmin = document.getElementById("printNombre");
 
-  if (nombreAdmin) {
+  if(personas.length === 0){
+    let nomOrganizador = document.getElementById("printNombre");
+    let eliminarBotonAd = document.getElementById("eliminarBotonAd");
+    nomOrganizador.style.display = "none";
+    eliminarBotonAd.style.display = "none";
+  }else{
     const dato = localStorage.getItem('organizador');
     nombreAdmin.textContent = dato || "";
   }
