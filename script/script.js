@@ -189,6 +189,8 @@ function cancelar(){
 }
 
 function cambiarTexto(){
+  const texto = document.getElementById("textoInstrucciones");
+
   if(window.innerWidth<992){
     document.getElementById("textoInstrucciones").textContent = "Selecciona una tematica usando los botones que están arriba";
   }
@@ -395,17 +397,14 @@ function mostrarListaExcepciones(personaActual){
   const contenedor=document.getElementById("listaPersonas");
 
   const listaDiv=document.createElement("div");
-
-  listaDiv.style.marginLeft="20px";
-  listaDiv.style.marginTop="10px";
-  listaDiv.style.border="1px solid black";
-  listaDiv.style.padding="10px";
+  listaDiv.id="listaDivExcepciones"
 
   const titulo=document.createElement("p");
   titulo.textContent="Selecciona excepciones para "+personaActual.nombre;
 
   const botonBorrar=document.createElement("button");
   botonBorrar.textContent="X";
+  botonBorrar.id="botonBorrar";
 
   botonBorrar.onclick=()=>listaDiv.remove();
 
@@ -415,11 +414,13 @@ function mostrarListaExcepciones(personaActual){
   personas.forEach(persona=>{
 
     const fila=document.createElement("div");
+    
 
     const nombre=document.createElement("span");
     nombre.textContent=persona.nombre+" ";
 
     const botonAgregar=document.createElement("button");
+    botonAgregar.id="botonAgregar";
     botonAgregar.textContent="Agregar";
 
     botonAgregar.addEventListener("click",()=>{
