@@ -377,6 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nombre.textContent=persona.nombre+" ";
 
     const boton=document.createElement("button");
+    boton.className="botonAgregarExc"
     boton.textContent="Añadir excepciones";
 
     boton.addEventListener("click",()=>{
@@ -397,14 +398,14 @@ function mostrarListaExcepciones(personaActual){
   const contenedor=document.getElementById("listaPersonas");
 
   const listaDiv=document.createElement("div");
-  listaDiv.id="listaDivExcepciones"
+  listaDiv.className="listaDivExcepciones";
 
   const titulo=document.createElement("p");
   titulo.textContent="Selecciona excepciones para "+personaActual.nombre;
 
   const botonBorrar=document.createElement("button");
   botonBorrar.textContent="X";
-  botonBorrar.id="botonBorrar";
+  botonBorrar.className="botonBorrar";
 
   botonBorrar.onclick=()=>listaDiv.remove();
 
@@ -420,7 +421,7 @@ function mostrarListaExcepciones(personaActual){
     nombre.textContent=persona.nombre+" ";
 
     const botonAgregar=document.createElement("button");
-    botonAgregar.id="botonAgregar";
+    botonAgregar.className="botonAgregar";
     botonAgregar.textContent="Agregar";
 
     botonAgregar.addEventListener("click",()=>{
