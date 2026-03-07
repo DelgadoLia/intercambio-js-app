@@ -68,6 +68,7 @@ function irPagina2(){
     return;
   }else{
     localStorage.setItem("organizador", nombre);
+    alert("Nombre del organizad@r guardado");
     window.location.href="nombres.html";
   }
 };
@@ -83,6 +84,7 @@ function irPagina3(){
       insertarPersona(nombre);
     }
   });
+  alert("Nombres de participantes guardados");
   window.location.href = "excluir.html";
 }
 
@@ -237,6 +239,7 @@ function irPagina5(){
     return;
   }else{
     localStorage.setItem("celebracion", celebracion);
+    alert("Celebración registrada correctamente");
     window.location.href="fecha.html";
   }
 }
@@ -263,6 +266,7 @@ function regresar4(){
 /////////////////////////////////////////////////////////////////////////////////////
 
 function irPagina6(){
+  alert("Fecha registrada correctamente");
   window.location.href="gasto.html";
 }
 
@@ -358,7 +362,10 @@ function mostrar(boton){
   }else if(boton.id === "btngasto"){
     document.getElementById("gastoText").style.display="block";
     document.getElementById("personalizadoGasto").style.display="block";
-  }
+  }//else if(boton.id === "btnTematicaOtro"){
+    //document.getElementById("gastoText").style.display="block";
+    //document.getElementById("personalizadoGasto").style.display="block";
+  //}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
