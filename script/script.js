@@ -562,3 +562,43 @@ function verificarlocalStorage(event){
     window.location.href="index.html";
   }
 }
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const celebracion = localStorage.getItem("celebracion");
+    const organizador = localStorage.getItem("organizador");
+    const fecha = localStorage.getItem("fechaCelebracion");
+    const presupuesto = localStorage.getItem("presupuesto");
+    const personas = JSON.parse(localStorage.getItem("personas"));
+    document.getElementById("celebracion").textContent = "Nombre de la celebracion: " + celebracion;
+    document.getElementById("organizador").textContent = "Nombre del organizador: " + organizador;
+    document.getElementById("fechaa").textContent = "Fecha del evento: " + fecha;
+    document.getElementById("presupuesto").textContent = "Presupuesto: $" + presupuesto;
+
+    let personasTexto = "";
+    personas.forEach(persona => {
+    personasTexto += persona.nombre + "  ";
+    
+});
+
+
+    let exclusionesTexto = "";
+    personas.forEach(persona => {
+    let exclusionesReales = persona.excepciones.filter(
+        nombre => nombre !== persona.nombre
+    );
+    if (exclusionesReales.length > 0) {
+        exclusionesTexto += persona.nombre + 
+        " no puede regalar a " + exclusionesReales.join(", ") + " ";
+    }
+});
+    document.getElementById("personass").textContent = "Participantes: " + personasTexto;
+    document.getElementById("exclusiones").textContent = "Relación de exclusiones: " + exclusionesTexto;
+});
+
+
+
