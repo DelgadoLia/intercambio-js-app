@@ -56,8 +56,8 @@
             <h1>¿Para qué vas a sortear nombres?</h1>
             <h4 id="textoInstrucciones">Arrastra los dulces que están fuera del recuadro para tener ideas</h4>
             <h4>También puedes escribirla directamente, aquí abajo</h4>
-            <button id="btnTematica" class="btn btnOtro mb-2" onclick="mostrar(this)">Mostrar más...</button>
-            <input type="text" id="tematica" placeholder="Introduce una tematica personalizada">
+            <button id="btnTematica" class="btn btnOtro mb-2" onclick="mostrarTematica(this)">Mostrar más...</button>
+            <input type="text" id="tematica" placeholder="Introduce una tematica personalizada" style="display:none; ">
             <button class="btnInicio" onclick="irPagina5()"><img src="imagenes/obleas.png" alt="Boton"></button>
         </div>
         <div class="alerta">
@@ -70,6 +70,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script/script.js"></script>
 
 </body>

@@ -9,11 +9,6 @@ function insertarPersona(nombre) {
 
   const existe = personas.some(p => p.nombre === nombre);
 
-  if (existe) {
-    alert("Ese nombre ya está agregado");
-    return false;
-  }
-
   personas.push({
     nombre: nombre,
     excepciones: [nombre],
@@ -64,13 +59,28 @@ function irPagina2(){
   const nombre = document.getElementById("nomOrganizador").value.trim();
   const check = document.getElementById("confirmar");
   if (!nombre) {
-    alert("Por favor escribe tu nombre");
-    return;
-  }else{
-    localStorage.setItem("organizador", nombre);
-    alert("Nombre del organizad@r guardado");
-    window.location.href="nombres.html";
-  }
+
+  Swal.fire({
+    icon: "warning",
+    title: "Campo vacío",
+    text: "Por favor escribe tu nombre"
+  });
+
+  return;
+
+}else{
+
+  localStorage.setItem("organizador", nombre);
+
+  Swal.fire({
+    icon: "success",
+    title: "Guardado",
+    text: "Nombre del organizador guardado"
+  }).then(() => {
+    window.location.href = "nombres.html";
+  });
+
+}
 };
 
 
@@ -84,9 +94,18 @@ function irPagina3(){
       insertarPersona(nombre);
     }
   });
-  alert("Nombres de participantes guardados");
-  window.location.href = "excluir.html";
+
+  Swal.fire({
+    icon: "success",
+    title: "Guardado",
+    text: "Nombres de participantes guardados"
+  }).then(() => {
+    window.location.href = "excluir.html";
+  });
 }
+
+
+
 
 
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
@@ -235,24 +254,40 @@ document.addEventListener("drop", (e)=>{
 function irPagina5(){
   const celebracion = document.getElementById("tematica").value.trim();
   if (!celebracion) {
-    alert("Por favor escribe o selecciona una celebración");
+
+    Swal.fire({
+      icon: "warning",
+      title: "Celebración faltante",
+      text: "Por favor escribe o selecciona una celebración"
+    });
+
     return;
   }else{
     localStorage.setItem("celebracion", celebracion);
-    alert("Celebración registrada correctamente");
-    window.location.href="fecha.html";
+
+    Swal.fire({
+      icon: "success",
+      title: "Registro exitoso",
+      text: "Celebración registrada correctamente"
+    }).then(() => {
+      window.location.href = "fecha.html";
+    });
   }
 }
 
-const botonesTematica = document.querySelectorAll(".botonTematica");
+document.addEventListener("DOMContentLoaded", () => {
 
-botonesTematica.forEach(boton => {
+  const botonesTematica = document.querySelectorAll(".botonTematica");
 
-  boton.addEventListener("click", () => {
+  botonesTematica.forEach(boton => {
 
-    const inputTematica = document.getElementById("tematica");
+    boton.addEventListener("click", () => {
 
-    inputTematica.value = boton.textContent;
+      const inputTematica = document.getElementById("tematica");
+
+      inputTematica.value = boton.textContent;
+
+    });
 
   });
 
@@ -266,8 +301,13 @@ function regresar4(){
 /////////////////////////////////////////////////////////////////////////////////////
 
 function irPagina6(){
-  alert("Fecha registrada correctamente");
-  window.location.href="gasto.html";
+  Swal.fire({
+    icon: "success",
+    title: "Registro exitoso",
+    text: "Fecha registrada correctamente"
+  }).then(() => {
+    window.location.href = "gasto.html";
+  });
 }
 
 function regresar5(){
@@ -296,6 +336,7 @@ function realizarIntercambio(personas) {
 
     let opciones = personasOrdenadas.filter(p =>
       !p.recibe &&
+      p.nombre !== actual.nombre &&
       !(actual.excepciones || []).includes(p.nombre)
     );
 
@@ -311,36 +352,65 @@ function realizarIntercambio(personas) {
       opcion.recibe = false;
       actual.nombreSorteado = "";
     }
-
-    return false;
-  }
-
-  const resultado = backtrack(0);
-
-  if (!resultado) {
-    alert("No existe combinación válida con las excepciones actuales");
-  }
-
-  return resultado;
+return false;
 }
 
+const resultado = backtrack(0);
+
+if (!resultado) {
+  personas.forEach(persona => {
+    persona.excepciones = [];
+  });
+  localStorage.setItem("personas", JSON.stringify(personas));
+
+  Swal.fire({
+    icon: "error",
+    title: "No se puede realizar el sorteo",
+    text: "No existe combinación válida con las excepciones actuales. Las excepciones se reiniciaron."
+  }).then(() => {
+    window.location.href = "excluir.html";
+  });
+
+}
+
+return resultado;
+
+}
 
 function irPagina7(){
   const gasto = document.getElementById("gastoText").value.trim();
   if(gasto !== ""){
     localStorage.setItem("presupuesto", gasto);
+  }else{
+    Swal.fire({
+      icon: "warning",
+      title: "Dato faltante",
+      text: "Introduce algún dato"
+    });
+    return;
   }
   let resultado = realizarIntercambio(personas);
   if(resultado){
     localStorage.setItem("personas", JSON.stringify(personas));
-    window.location.href = "opciones.html";
+    Swal.fire({
+      icon: "success",
+      title: "Sorteo realizado",
+      text: "El intercambio se generó correctamente"
+    }).then(() => {
+      window.location.href = "opciones.html";
+    });
   }
 }
 
 function regresar6(){
-  window.location.href="gasto.html";
+  Swal.fire({
+    icon: "success",
+    title: "Registro exitoso",
+    text: "Fecha registrada correctamente"
+  }).then(() => {
+    window.location.href = "gasto.html";
+  });
 }
-
 ///////////////////////////////////////////////////////////////////////////////////
 
 function irPagina8(){
@@ -428,48 +498,64 @@ function mostrarListaExcepciones(personaActual){
   personas.forEach(persona=>{
 
     const fila=document.createElement("div");
-    
-
     const nombre=document.createElement("span");
     nombre.textContent=persona.nombre+" ";
-
     const botonAgregar=document.createElement("button");
     botonAgregar.className="botonAgregar";
     botonAgregar.textContent="Agregar";
-
     botonAgregar.addEventListener("click",()=>{
 
-      if(persona.nombre===personaActual.nombre){
-        alert("No puedes agregarte a ti mismo");
-        return;
-      }
+      if(persona.nombre === personaActual.nombre){
 
-      if(personaActual.excepciones.includes(persona.nombre)){ 
-        alert("Ya está en la lista de excepciones");
-        return;
-      }
-
-      personaActual.excepciones.push(persona.nombre);
-
-      localStorage.setItem("personas", JSON.stringify(personas));
-
-      console.log("Excepciones actualizadas de",personaActual.nombre);
-      console.log(personaActual.excepciones);
-
-      alert("Excepción agregada");
-
-    });
-
-    fila.appendChild(nombre);
-    fila.appendChild(botonAgregar);
-
-    listaDiv.appendChild(fila);
-
+  Swal.fire({
+    icon: "warning",
+    title: "Acción no permitida",
+    text: "No puedes agregarte a ti mismo"
   });
 
+  return;
+}
+
+if(personaActual.excepciones.includes(persona.nombre)){ 
+
+  Swal.fire({
+    icon: "info",
+    title: "Ya existe",
+    text: "Ya está en la lista de excepciones"
+  });
+
+  return;
+}
+
+personaActual.excepciones.push(persona.nombre);
+
+localStorage.setItem("personas", JSON.stringify(personas));
+
+console.log("Excepciones actualizadas de", personaActual.nombre);
+console.log(personaActual.excepciones);
+
+Swal.fire({
+  icon: "success",
+  title: "Excepción agregada",
+  text: "Se agregó correctamente a la lista"
+});
+
+    });
+    fila.appendChild(nombre);
+    fila.appendChild(botonAgregar);
+    listaDiv.appendChild(fila);
+  });
   contenedor.appendChild(listaDiv);
 
 }
+
+
+
+function mostrarTematica(boton){
+  const input = document.getElementById("tematica");
+  input.style.display = "block";
+}
+
 
 
 
@@ -481,9 +567,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if(!btn1 || !btn2 || !btn3) return;
   const hoy = new Date();
   const propuestas = [
-    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 7),
-    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 14),
-    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 21)
+    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 1),
+    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 2),
+    new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 3)
   ];
   const botones = [btn1, btn2, btn3];
   propuestas.forEach((fecha, i) => {
@@ -496,7 +582,13 @@ document.addEventListener("DOMContentLoaded", () => {
     botones[i].onclick = () => {
       const fechaSeleccionada = fecha.toISOString().split("T")[0];
       localStorage.setItem("fechaCelebracion", fechaSeleccionada);
-      window.location.href = "gasto.html";
+      Swal.fire({
+    icon: "success",
+    title: "Registro exitoso",
+    text: "Fecha registrada correctamente"
+  }).then(() => {
+    window.location.href = "gasto.html";
+  });
     };
   });
 }
@@ -512,7 +604,13 @@ if(inputFecha){
     const fechaSeleccionada = inputFecha.value;
     if(fechaSeleccionada !== ""){
       localStorage.setItem("fechaCelebracion", fechaSeleccionada);
-      window.location.href = "gasto.html";
+      Swal.fire({
+    icon: "success",
+    title: "Registro exitoso",
+    text: "Fecha registrada correctamente"
+  }).then(() => {
+    window.location.href = "gasto.html";
+  });
     }
   });
 }
@@ -531,21 +629,33 @@ document.addEventListener("DOMContentLoaded", () => {
   if(btn100){
     btn100.addEventListener("click", () => {
       localStorage.setItem("presupuesto", 100);
-      window.location.href="opciones.html";
+      let resultado = realizarIntercambio(personas);
+  if(resultado){
+    localStorage.setItem("personas", JSON.stringify(personas));
+    window.location.href = "opciones.html";
+  }
     });
   }
 
   if(btn150){
     btn150.addEventListener("click", () => {
       localStorage.setItem("presupuesto", 150);
-      window.location.href="opciones.html";
+      let resultado = realizarIntercambio(personas);
+  if(resultado){
+    localStorage.setItem("personas", JSON.stringify(personas));
+    window.location.href = "opciones.html";
+  }
     });
   }
 
   if(btn200){
     btn200.addEventListener("click", () => {
       localStorage.setItem("presupuesto", 200);
-      window.location.href="opciones.html";
+      let resultado = realizarIntercambio(personas);
+  if(resultado){
+    localStorage.setItem("personas", JSON.stringify(personas));
+    window.location.href = "opciones.html";
+  }
     });
   }
 
@@ -556,20 +666,37 @@ document.addEventListener("DOMContentLoaded", () => {
 function verificarlocalStorage(event){
   event.preventDefault();
 
-  if(localStorage.length===0){
-    window.location.href="index.html";
+  if(localStorage.length === 0){
+    window.location.href = "index.html";
     return;
   }
 
-  let confirmarLocal=confirm("¿Estas seguro que deseas eliminar los datos del sorteo?");
-  if(confirmarLocal){
-    localStorage.clear();
-    window.location.href="index.html";
-  }else{
-    window.location.href="index.html";
-  }
-}
+  Swal.fire({
+    icon: "warning",
+    title: "¿Eliminar datos?",
+    text: "¿Estás seguro de que deseas eliminar los datos del sorteo?",
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
 
+    if(result.isConfirmed){
+      localStorage.clear();
+
+      Swal.fire({
+        icon: "success",
+        title: "Datos eliminados",
+        text: "El sorteo se ha reiniciado correctamente"
+      }).then(() => {
+        window.location.href = "index.html";
+      });
+
+    } else {
+      window.location.href = "index.html";
+    }
+
+  });
+}
 
 
 
@@ -600,7 +727,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     if (exclusionesReales.length > 0) {
         exclusionesTexto += persona.nombre + 
-        " no puede regalar a " + exclusionesReales.join(", ") + " ";
+        " no le puede regalar a " + exclusionesReales.join(", ") + " ";
     }
 });
     document.getElementById("personass").textContent = "Participantes: " + personasTexto;
