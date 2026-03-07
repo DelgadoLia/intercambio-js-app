@@ -602,3 +602,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const personas = JSON.parse(localStorage.getItem("personas"));
+    const listaSorteo = document.getElementById("listaSorteo");
+
+    personas.forEach(persona => {
+        if(persona.nombreSorteado && persona.nombreSorteado !== "") {
+
+            const div = document.createElement("div");
+            div.classList.add("itemSorteo");
+
+            const spanNombre = document.createElement("span");
+            spanNombre.textContent = persona.nombre;
+
+            const spanFlecha = document.createElement("span");
+            spanFlecha.classList.add("flecha");
+            spanFlecha.textContent = "→";
+
+            const spanDestino = document.createElement("span");
+            spanDestino.textContent = persona.nombreSorteado;
+
+            div.appendChild(spanNombre);
+            div.appendChild(spanFlecha);
+            div.appendChild(spanDestino);
+
+            listaSorteo.appendChild(div);
+        }
+    });
+
+});
