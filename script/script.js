@@ -543,3 +543,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+//Opcion para eliminar local storage////////////////////////////////////////////////////////////////
+
+function verificarlocalStorage(event){
+  event.preventDefault();
+
+  if(localStorage.length===0){
+    window.location.href="index.html";
+    return;
+  }
+
+  let confirmarLocal=confirm("¿Estas seguro que deseas eliminar los datos del sorteo?");
+  if(confirmarLocal){
+    localStorage.clear();
+    window.location.href="index.html";
+  }else{
+    window.location.href="index.html";
+  }
+}

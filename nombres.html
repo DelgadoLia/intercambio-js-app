@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg sticky-top" style="background-color: rgba(223, 200, 168);">
         <div class="container">
             <img src="imagenes/logoIntercambio.png" alt="Logo" class="logo">
-            <a href="index.html" class="navbar-brand fw-bold">Intercambio</a>
+            <a href="index.html" class="navbar-brand fw-bold" onclick="verificarlocalStorage(event)">MIX MEX</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <button class="btnAgregar" onclick="agregarNombre()">+</button>
-            <button class="btnInicio" onclick="irPagina3()"><img src="imagenes/pulparindo.png" alt="Boton"></button>
+            <button class="btnInicio" onclick="irPagina3()"><img src="imagenes/pulparindo.png" alt="Boton" style="width:40%;"></button>
         </div>
         <div class="alerta">
             <div id="liveAlertPlaceholder"></div>
