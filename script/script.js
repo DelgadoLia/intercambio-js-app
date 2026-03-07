@@ -301,13 +301,24 @@ function regresar4(){
 /////////////////////////////////////////////////////////////////////////////////////
 
 function irPagina6(){
-  Swal.fire({
-    icon: "success",
-    title: "Registro exitoso",
-    text: "Fecha registrada correctamente"
-  }).then(() => {
-    window.location.href = "gasto.html";
-  });
+  const fecha = document.getElementById("fecha").value.trim();
+  if(!fecha){
+    Swal.fire({
+      icon: "warning",
+      title: "Fecha faltante",
+      text: "Por favor introduce o selecciona una fecha"
+    });
+    return
+  }else{
+    Swal.fire({
+      icon: "success",
+      title: "Registro exitoso",
+      text: "Fecha registrada correctamente"
+    }).then(() => {
+      window.location.href = "gasto.html";
+    });
+  }
+  
 }
 
 function regresar5(){
@@ -366,7 +377,7 @@ if (!resultado) {
   Swal.fire({
     icon: "error",
     title: "No se puede realizar el sorteo",
-    text: "No existe combinación válida con las excepciones actuales. Las excepciones se reiniciaron."
+    text: "Porfavor modifique sus exclusiones"
   }).then(() => {
     window.location.href = "excluir.html";
   });
@@ -401,15 +412,9 @@ function irPagina7(){
     });
   }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////PREGUNTAR A ELIA
 function regresar6(){
-  Swal.fire({
-    icon: "success",
-    title: "Registro exitoso",
-    text: "Fecha registrada correctamente"
-  }).then(() => {
-    window.location.href = "gasto.html";
-  });
+  window.location.href = "gasto.html";
 }
 ///////////////////////////////////////////////////////////////////////////////////
 
