@@ -242,6 +242,11 @@ input[type="checkbox"]{
     left:18vw;
 }
 
+.btnTematicaM:focus, .btnTematicaN:focus,
+.btnTematicaNa:focus, .btnTematicaV:focus{
+    background-color: #2e7d32;
+}
+
 /*exluirMostrar************************************************************************/
 .listaDivExcepciones{
     background-color: rgb(238, 203, 160);
