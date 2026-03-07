@@ -412,7 +412,7 @@ function irPagina7(){
     });
   }
 }
-/////////////////////////////////////////////////////////////////////////////////////PREGUNTAR A ELIA
+
 function regresar6(){
   window.location.href = "gasto.html";
 }
